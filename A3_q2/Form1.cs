@@ -30,7 +30,7 @@ namespace A3_q2
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            int userGues = Convert.ToInt32(txtGues.Text);
+            int userGues = Convert.ToInt32(txtGues.Text);//
             if (randomNum == userGues && atemptsLeft == 1) {
 
             }
