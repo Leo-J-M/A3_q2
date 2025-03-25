@@ -4,39 +4,40 @@ using Microsoft.VisualBasic.ApplicationServices;
 namespace A3_q2
 {
     public partial class Form1 : Form {
+        const string arrowUp = "\u2191";
+        const string arrowDown = "\u2193";
+
         int randomNum;
         int atemptsLeft;
         int gamesWon;
-
 
         Random random = new Random();
 
         public Form1() {
             InitializeComponent();
             this.AcceptButton = btnGues;
-
             randomNum = random.Next(1, 1000);
-
             txtAnsw.Text = randomNum.ToString();
             atemptsLeft = 10;
             gamesWon = 0;
         }
 
         private void btnGues_Click(object sender, EventArgs e) {
-            if (!txtGues.Text.All(char.IsDigit) || txtGues.Text == "") {
+            if (!txtGues.Text.All(char.IsDigit) || txtGues.Text == "") {//check input
                 MessageBox.Show("Invalid input! Enter 1-1000.");
                 txtGues.Text = "";
                 return;
             }
 
-            listViewGuesses.Items.Add(new ListViewItem(txtGues.Text));
-            int userGues = Convert.ToInt32(txtGues.Text);//
+            int userGues = Convert.ToInt32(txtGues.Text);
 
-            if (userGues > 1000 || userGues < 1) {
+            if (userGues > 1000 || userGues < 1) {//check input
                 MessageBox.Show("Invalid input! Enter 1-1000.");
                 txtGues.Text = "";
                 return;
             }
+
+            ListViewItem item = new ListViewItem(txtGues.Text);
 
             if (randomNum == userGues) {
                 if (atemptsLeft == 1) {
@@ -45,6 +46,7 @@ namespace A3_q2
                 else {
                     MessageBox.Show("You know the secret!");
                 }
+                item.SubItems.Add("=");
                 btnGues.Enabled = false;
                 txtWon.Text = (++gamesWon).ToString();
                 DialogResult result = MessageBox.Show("Start new game?",
@@ -54,8 +56,10 @@ namespace A3_q2
 
                 if (result == DialogResult.Yes) {
                     btnNewGame_Click(sender, e);
+                    return;
                 }
                 txtGues.Text = "";
+                listViewGuesses.Items.Add(item);
                 return;
             }
 
@@ -75,12 +79,15 @@ namespace A3_q2
 
             else if (randomNum > userGues) {
                 MessageBox.Show("Too Low, Try again.");
+                item.SubItems.Add(arrowDown);
             }
 
             else if (randomNum < userGues) {
                 MessageBox.Show("Too HIGH, Try again.");
+                item.SubItems.Add(arrowUp);
             }
 
+            listViewGuesses.Items.Add(item);
             txtAtempts.Text = (--atemptsLeft).ToString();
             txtGues.Text = "";
         }

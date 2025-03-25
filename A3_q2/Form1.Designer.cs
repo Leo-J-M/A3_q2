@@ -38,6 +38,7 @@
             txtAnsw = new TextBox();
             listViewGuesses = new ListView();
             columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
             checkBoxShow = new CheckBox();
             SuspendLayout();
             // 
@@ -144,11 +145,11 @@
             // 
             // listViewGuesses
             // 
-            listViewGuesses.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            listViewGuesses.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             listViewGuesses.GridLines = true;
             listViewGuesses.Location = new Point(451, 21);
             listViewGuesses.Name = "listViewGuesses";
-            listViewGuesses.Size = new Size(84, 327);
+            listViewGuesses.Size = new Size(109, 327);
             listViewGuesses.TabIndex = 9;
             listViewGuesses.UseCompatibleStateImageBehavior = false;
             listViewGuesses.View = View.Details;
@@ -158,10 +159,15 @@
             columnHeader1.Text = "Guesses";
             columnHeader1.Width = 80;
             // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "";
+            columnHeader2.Width = 25;
+            // 
             // checkBoxShow
             // 
             checkBoxShow.AutoSize = true;
-            checkBoxShow.Location = new Point(580, 151);
+            checkBoxShow.Location = new Point(615, 141);
             checkBoxShow.Name = "checkBoxShow";
             checkBoxShow.Size = new Size(114, 29);
             checkBoxShow.TabIndex = 10;
@@ -173,7 +179,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 379);
+            ClientSize = new Size(591, 379);
             Controls.Add(checkBoxShow);
             Controls.Add(listViewGuesses);
             Controls.Add(txtAnsw);
@@ -207,5 +213,6 @@
         private ListView listViewGuesses;
         private ColumnHeader columnHeader1;
         private CheckBox checkBoxShow;
+        private ColumnHeader columnHeader2;
     }
 }
