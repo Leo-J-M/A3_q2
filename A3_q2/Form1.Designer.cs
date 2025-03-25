@@ -35,13 +35,17 @@
             txtWon = new TextBox();
             txtAtempts = new TextBox();
             btnGues = new Button();
+            txtAnsw = new TextBox();
+            listViewGuesses = new ListView();
+            columnHeader1 = new ColumnHeader();
+            checkBoxShow = new CheckBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F);
-            label1.Location = new Point(67, 171);
+            label1.Location = new Point(33, 202);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(265, 30);
@@ -51,7 +55,7 @@
             // txtGues
             // 
             txtGues.Font = new Font("Segoe UI", 11F);
-            txtGues.Location = new Point(337, 168);
+            txtGues.Location = new Point(303, 199);
             txtGues.Margin = new Padding(4, 5, 4, 5);
             txtGues.Name = "txtGues";
             txtGues.Size = new Size(141, 37);
@@ -61,7 +65,7 @@
             // btnNewGame
             // 
             btnNewGame.Font = new Font("Segoe UI", 11F);
-            btnNewGame.Location = new Point(326, 56);
+            btnNewGame.Location = new Point(292, 47);
             btnNewGame.Margin = new Padding(4, 5, 4, 5);
             btnNewGame.Name = "btnNewGame";
             btnNewGame.Size = new Size(152, 38);
@@ -74,7 +78,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F);
-            label2.Location = new Point(67, 63);
+            label2.Location = new Point(33, 54);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(126, 30);
@@ -85,7 +89,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F);
-            label3.Location = new Point(67, 120);
+            label3.Location = new Point(33, 127);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(131, 30);
@@ -95,7 +99,7 @@
             // txtWon
             // 
             txtWon.Font = new Font("Segoe UI", 11F);
-            txtWon.Location = new Point(206, 57);
+            txtWon.Location = new Point(172, 48);
             txtWon.Margin = new Padding(4, 5, 4, 5);
             txtWon.Name = "txtWon";
             txtWon.ReadOnly = true;
@@ -107,7 +111,7 @@
             // txtAtempts
             // 
             txtAtempts.Font = new Font("Segoe UI", 11F);
-            txtAtempts.Location = new Point(206, 117);
+            txtAtempts.Location = new Point(172, 124);
             txtAtempts.Margin = new Padding(4, 5, 4, 5);
             txtAtempts.Name = "txtAtempts";
             txtAtempts.ReadOnly = true;
@@ -119,7 +123,7 @@
             // btnGues
             // 
             btnGues.Font = new Font("Segoe UI", 11F);
-            btnGues.Location = new Point(67, 233);
+            btnGues.Location = new Point(33, 310);
             btnGues.Margin = new Padding(4, 5, 4, 5);
             btnGues.Name = "btnGues";
             btnGues.Size = new Size(411, 38);
@@ -128,11 +132,51 @@
             btnGues.UseVisualStyleBackColor = true;
             btnGues.Click += btnGues_Click;
             // 
+            // txtAnsw
+            // 
+            txtAnsw.Location = new Point(402, 126);
+            txtAnsw.Name = "txtAnsw";
+            txtAnsw.ReadOnly = true;
+            txtAnsw.Size = new Size(42, 31);
+            txtAnsw.TabIndex = 8;
+            txtAnsw.TextAlign = HorizontalAlignment.Center;
+            txtAnsw.Visible = false;
+            // 
+            // listViewGuesses
+            // 
+            listViewGuesses.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            listViewGuesses.GridLines = true;
+            listViewGuesses.Location = new Point(451, 21);
+            listViewGuesses.Name = "listViewGuesses";
+            listViewGuesses.Size = new Size(84, 327);
+            listViewGuesses.TabIndex = 9;
+            listViewGuesses.UseCompatibleStateImageBehavior = false;
+            listViewGuesses.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Guesses";
+            columnHeader1.Width = 80;
+            // 
+            // checkBoxShow
+            // 
+            checkBoxShow.AutoSize = true;
+            checkBoxShow.Location = new Point(580, 151);
+            checkBoxShow.Name = "checkBoxShow";
+            checkBoxShow.Size = new Size(114, 29);
+            checkBoxShow.TabIndex = 10;
+            checkBoxShow.Text = "Show ans";
+            checkBoxShow.UseVisualStyleBackColor = true;
+            checkBoxShow.CheckedChanged += checkBoxShow_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 365);
+            ClientSize = new Size(558, 379);
+            Controls.Add(checkBoxShow);
+            Controls.Add(listViewGuesses);
+            Controls.Add(txtAnsw);
             Controls.Add(btnGues);
             Controls.Add(txtAtempts);
             Controls.Add(txtWon);
@@ -159,5 +203,9 @@
         private TextBox txtWon;
         private TextBox txtAtempts;
         private Button btnGues;
+        private TextBox txtAnsw;
+        private ListView listViewGuesses;
+        private ColumnHeader columnHeader1;
+        private CheckBox checkBoxShow;
     }
 }

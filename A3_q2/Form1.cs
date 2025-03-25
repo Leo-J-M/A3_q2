@@ -16,17 +16,20 @@ namespace A3_q2
             this.AcceptButton = btnGues;
 
             randomNum = random.Next(1, 1000);
+
+            txtAnsw.Text = randomNum.ToString();
             atemptsLeft = 10;
             gamesWon = 0;
         }
 
         private void btnGues_Click(object sender, EventArgs e) {
-            if (!txtGues.Text.All(char.IsDigit)) {
+            if (!txtGues.Text.All(char.IsDigit) || txtGues.Text == "") {
                 MessageBox.Show("Invalid input! Enter 1-1000.");
                 txtGues.Text = "";
                 return;
             }
-            
+
+            listViewGuesses.Items.Add(new ListViewItem(txtGues.Text));
             int userGues = Convert.ToInt32(txtGues.Text);//
 
             if (userGues > 1000 || userGues < 1) {
@@ -42,6 +45,7 @@ namespace A3_q2
                 else {
                     MessageBox.Show("You know the secret!");
                 }
+                btnGues.Enabled = false;
                 txtWon.Text = (++gamesWon).ToString();
                 DialogResult result = MessageBox.Show("Start new game?",
                                                           "Click Yes",
@@ -51,6 +55,7 @@ namespace A3_q2
                 if (result == DialogResult.Yes) {
                     btnNewGame_Click(sender, e);
                 }
+                txtGues.Text = "";
                 return;
             }
 
@@ -83,9 +88,18 @@ namespace A3_q2
         private void btnNewGame_Click(object sender, EventArgs e) {
             btnGues.Enabled = true;
             randomNum = random.Next(1, 1000);
+            txtAnsw.Text = randomNum.ToString();
             atemptsLeft = 10;
             txtAtempts.Text = atemptsLeft.ToString();
             txtGues.Text = "";
+            listViewGuesses.Items.Clear();
+        }
+
+        private void checkBoxShow_CheckedChanged(object sender, EventArgs e) {
+            if (checkBoxShow.Checked) 
+                txtAnsw.Visible = true;
+            else                
+                txtAnsw.Visible = false;
         }
     }
 }
